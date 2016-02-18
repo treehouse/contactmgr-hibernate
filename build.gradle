@@ -1,0 +1,15 @@
+group 'com.teamtreehouse'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'com.h2database:h2:1.4.191'
+}
