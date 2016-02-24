@@ -39,12 +39,22 @@ public class Application {
         c.setFirstName("Beatrix");
 
         // Persist the changes
-        System.out.printf("%n%nUpdating...%n%n");
+        System.out.printf("%nUpdating...%n");
         update(c);
-        System.out.printf("%n%nUpdate complete!%n%n");
+        System.out.printf("%nUpdate complete!%n");
 
         // Display a list of contacts after the update
-        System.out.printf("%n%nAfter update%n%n");
+        System.out.printf("%nAfter update%n");
+        fetchAllContacts().stream().forEach(System.out::println);
+
+        // Get the contact with id of 1
+        c = findContactById(1);
+
+        // Delete the contact
+        System.out.printf("%nDeleting...%n");
+        delete(c);
+        System.out.printf("%nDeleted!%n");
+        System.out.printf("%nAfter delete%n");
         fetchAllContacts().stream().forEach(System.out::println);
     }
 
@@ -60,6 +70,23 @@ public class Application {
 
         // Return the object
         return contact;
+    }
+
+    private static void delete(Contact contact) {
+        // Open a session
+        Session session = sessionFactory.openSession();
+
+        // Begin a transaction
+        session.beginTransaction();
+
+        // Use the session to update the contact
+        session.delete(contact);
+
+        // Commit the transaction
+        session.getTransaction().commit();
+
+        // Close the session
+        session.close();
     }
 
     private static void update(Contact contact) {
