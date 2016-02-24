@@ -10,6 +10,9 @@
         <!-- Create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
 
+        <!-- Show the queries prepared by Hibernate -->
+        <property name="show_sql">true</property>
+
         <!-- Names the annotated entity classes -->
         <mapping class="com.teamtreehouse.contactmgr.model.Contact" />
     </session-factory>
