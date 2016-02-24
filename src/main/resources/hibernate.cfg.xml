@@ -6,5 +6,11 @@
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Names the annotated entity classes -->
+        <mapping class="com.teamtreehouse.contactmgr.model.Contact" />
     </session-factory>
 </hibernate-configuration>
